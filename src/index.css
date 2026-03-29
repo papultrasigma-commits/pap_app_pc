@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+/* 🔴 O SEGREDO DO ZOOM ESTÁ AQUI 🔴 */
+/* Num ecrã normal de desktop (1920px), o tamanho é 16px (100%) */
+/* Num portátil (menor que 1600px), encolhe tudo automaticamente para ~85% do tamanho */
+@media (max-width: 1600px) {
+  html { font-size: 14px; }
+}
+/* Em ecrãs ainda mais pequenos, encolhe para 75% */
+@media (max-width: 1366px) {
+  html { font-size: 12px; }
+}
+
+body {
+  margin: 0;
+  background-color: #0f1112; /* O Preto do Valorant */
+  color: white;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Utilitário para esconder a barra de scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
