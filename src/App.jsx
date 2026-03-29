@@ -283,6 +283,11 @@ export default function App() {
   return (
     <div className="flex min-h-screen bg-[#0f1112] text-white font-sans selection:bg-red-500 selection:text-white relative">
       
+      {/* ========================================================= */}
+      {/* 🔴 NOVA DIV PARA ARRASTAR A JANELA NO TOPO DA APLICAÇÃO 🔴 */}
+      {/* ========================================================= */}
+      <div className="topo-da-app fixed top-0 left-0 w-full h-[30px] z-[100] pointer-events-auto"></div>
+
       {showAccountModal && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
           <div className="bg-[#111] border border-gray-800 p-6 rounded-2xl w-full max-w-sm relative shadow-2xl animate-in fade-in zoom-in-95 duration-200">
@@ -293,7 +298,8 @@ export default function App() {
               </div>
             )}
             
-            <button onClick={() => setShowAccountModal(false)} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+            {/* Adicionada classe 'no-drag' e 'z-[101]' para poder fechar o modal mesmo se bater na área de topo */}
+            <button onClick={() => setShowAccountModal(false)} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors no-drag z-[101]">
               <X size={20} />
             </button>
             <h2 className="text-xl font-bold mb-5 flex items-center gap-2">
@@ -337,7 +343,8 @@ export default function App() {
             <h1 className="font-bold text-xl tracking-wider uppercase leading-none">Valorant</h1>
             <span className="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-bold">Team Manager</span>
           </div>
-          <button className="ml-auto md:hidden text-gray-400" onClick={() => setSidebarOpen(false)} type="button"><X size={24} /></button>
+          {/* Adicionada classe 'no-drag' ao botão de fechar do mobile */}
+          <button className="ml-auto md:hidden text-gray-400 no-drag z-50 relative" onClick={() => setSidebarOpen(false)} type="button"><X size={24} /></button>
         </div>
 
         <nav className="flex-1 py-6 px-4 space-y-2 overflow-y-auto custom-scrollbar">
@@ -383,7 +390,8 @@ export default function App() {
 
       <main className="flex-1 flex flex-col min-w-0">
         <div className="md:hidden flex items-center justify-between p-4 border-b border-gray-800 bg-[#111]">
-          <button onClick={() => setSidebarOpen(true)} className="text-gray-300" type="button"><Menu size={24} /></button>
+          {/* Adicionada classe 'no-drag' ao botão de abrir menu no mobile */}
+          <button onClick={() => setSidebarOpen(true)} className="text-gray-300 no-drag z-50 relative" type="button"><Menu size={24} /></button>
           <span className="font-bold tracking-wider">{headerTitle}</span>
           <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-xs font-bold">{initial}</div>
         </div>

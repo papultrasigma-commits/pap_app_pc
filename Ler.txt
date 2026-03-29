@@ -26,3 +26,6 @@ git add package.json package-lock.json
 git commit -m "Removido pacote antigo do tensorflow para corrigir conflitos"
 
 git push
+
+
+npm run dist

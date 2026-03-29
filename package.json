@@ -1,18 +1,20 @@
 {
-  "name": "valorant-nexus",
+  "name": "PWS",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dist": "vite build && electron-builder"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.90.1",
     "@tensorflow/tfjs": "^4.22.0",
+    "electron-updater": "^6.8.3",
     "nsfwjs": "^4.3.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -25,6 +27,7 @@
     "@vitejs/plugin-react": "^5.1.1",
     "autoprefixer": "^10.4.23",
     "electron": "^33.0.0",
+    "electron-builder": "^24.13.3",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
@@ -34,5 +37,21 @@
     "tailwindcss": "^3.4.17",
     "vite": "^7.2.4",
     "vite-plugin-electron": "^0.28.8"
+  },
+  "build": {
+    "appId": "com.oseunome.valorantnexus",
+    "productName": "PWS",
+    "directories": {
+      "output": "dist_setup"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
   }
 }

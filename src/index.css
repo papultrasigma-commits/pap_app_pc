@@ -37,3 +37,28 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ========================================================== */
+/* CLASSES PARA ARRASTAR A JANELA (ELECTRON CUSTOM TITLE BAR) */
+/* ========================================================== */
+
+/* Aplique esta classe à div que ficar no topo da sua app */
+.topo-da-app {
+  -webkit-app-region: drag; /* Permite arrastar a janela por aqui */
+  height: 30px; /* A mesma altura (ou um pouco maior) definida no titleBarOverlay do main.js */
+  width: 100%;
+  /* Se a sua barra não estiver a ficar no topo, pode precisar de adicionar:
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50; 
+  */
+}
+
+/* Desativar o arrastar em elementos que precisam de ser clicáveis */
+.topo-da-app button,
+.topo-da-app a,
+.topo-da-app input,
+.no-drag {
+  -webkit-app-region: no-drag;
+}
