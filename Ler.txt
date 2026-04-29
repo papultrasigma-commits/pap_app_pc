@@ -1,0 +1,28 @@
+Como dar run ao projeto
+
+No visual studio instalar react,vite,tailwind css e supabase 
+Depois   npm install se nao houver node modules se ja houver isso npm run dev, clicar no link  e tamos lá.
+
+Pode ser que haja algum erro  , que o chatgpt e  o gemini resolvem como deve ser.
+
+isto aqui é para o projeto ser atualizado no github.
+git add .
+git commit -m "Escreva aqui o que você fez. Ex: Criei a página de registo"
+git push origin main
+
+deve ser criado um ficheiro .env dentro de pap_site-main
+o .env tem ISTO la dentro 
+
+VITE_SUPABASE_URL=https://kkidrjsjkyzetowrydtt.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_YLac_kYcNaiM_Jb5vUXlsQ_RtwPa800
+
+
+npm install @tensorflow/tfjs nsfwjs
+
+npm install @tensorflow-models/toxicity --legacy-peer-deps
+
+git add package.json package-lock.json
+
+git commit -m "Removido pacote antigo do tensorflow para corrigir conflitos"
+
+git push

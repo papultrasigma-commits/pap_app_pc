@@ -1,0 +1,43 @@
+
+autenticacao 2 fatores
+
+recuperar a senha
+X ver perfil doutros jogadores
+ver perfil de outra equipa
+guardar as estrategias
+
+O Quadro Tático Interativo (/strategies) - Mais impressionante visualmente
+Tens os mapas e tens os ícones das habilidades. Podes criar uma página onde a equipa seleciona um mapa (ex: Ascent) e abre um quadro interativo (Canvas).
+
+O que podes fazer: Fazer com que os jogadores consigam arrastar (Drag & Drop) os ícones das habilidades (ex: Smokes do Omen, Fios do Cypher) para cima da imagem do mapa para desenharem as execuções e setups defensivos.
+
+Porquê agora: É uma funcionalidade super visual, fantástica para apresentar na defesa do teu projeto (PAP) e é extremamente útil para as equipas combinarem táticas antes dos jogos.
+
+quais sao as credencias do admin sao admin@gmail.com  e a pass admin123 , quando alguem faz uma denuncia o admin recebe nas suas notificacoes e pode banir o utilizador que faz a publicacao ou comentario por algum tempo ou permanente , o admin devia ter menos coisas visto que ele nao vai criar equipa nem vai ter chat de equipa e assim , talvez nem devesse ter perfil apenas teria torneios para os criar o feed para ver e poder banir utilizadores e notificacoes para isso tambem se devia ter mais abas tu é que sabes
+
+2. O que falta ou deve ser melhorado no Projeto (Boas Práticas)
+Analisando os teus dois ficheiros, aqui estão as coisas mais importantes que devias ajustar para teres uma PAP com nota máxima:
+
+Segurança (Guardar Tokens no LocalStorage): No teu Login.jsx, estás a guardar o accessToken e o refreshToken no localStorage na chave "vlr_saved_accounts".
+
+O problema: Isto é um risco de segurança grave. O Supabase já guarda a sessão atual de forma segura. Não deves guardar os tokens de acesso "à mão" em texto limpo.
+
+A solução: Guarda apenas o email, username e id na tua lista de contas guardadas. Deixa a gestão de tokens exclusivamente para o Supabase.
+
+O "Hack" dos Botões no HomePage: No teu HomePage.jsx, estás a usar um requestAnimationFrame para procurar na página os botões com o texto "Login" ou "Registo" e a forçar um .click() neles.
+
+O problema: Esta é a famosa "gambiarra". Se um dia mudares o texto do botão para "Entrar", o código parte-se todo.
+
+A solução: O ideal é passares o modo ("login" ou "signup") como um prop para o teu componente <AuthGate mode={modoDesejado} /> e gerir o estado de forma reativa.
+
+Falta de botão de Fechar nas Contas Guardadas: No Login.jsx, quando o utilizador está no modo de ecrã normal (login/registo), existe um botão <ArrowLeft> no canto superior esquerdo para voltar/fechar.
+
+O problema: Se o ecrã abrir no modo mode === "saved_accounts", esse botão não é renderizado e o utilizador fica preso sem conseguir voltar a navegar livremente pela Homepage.
+
+A solução: Adiciona o botão de voltar/fechar <ArrowLeft> também dentro do bloco if (mode === "saved_accounts").
+
+Tratamento de Erros por Texto: No handleSubmit do Login.jsx, estás a verificar erros fazendo lower.includes("invalid login credentials").
+
+O problema: Se a API do Supabase atualizar e mudar a mensagem de erro (ou se for traduzida), o teu código deixa de mostrar o erro correto ao utilizador.
+
+A solução: Verifica sempre o código de erro oficial da API (se disponível) ou aceita que algumas mensagens genéricas podem ser repassadas.
